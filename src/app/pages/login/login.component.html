@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-title>Iniciar Sesion</mat-card-title>
+    <mat-card-content>
+        <div class="total">
+            <form [formGroup]="formul" class="form-inline">
+
+                <p>
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Username" formControlName="username" />
+                        <mat-hint *ngIf="formul.get('username').errors && formul.get('username').touched">
+                            <p *ngIf="formul.get('username').hasError('required')">
+                              Se requiere este campo
+                            </p>
+                            <p *ngIf="formul.get('username').hasError('minlength')">
+                              Minimo 3 caracteres
+                            </p>
+                            <p *ngIf="formul.get('username').hasError('maxlength')">
+                              *Maximo 15 caracteres   
+                            </p>
+                          </mat-hint>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'">
+                       
+                        <mat-hint *ngIf="formul.get('password').errors && formul.get('password').touched">
+                            <p *ngIf="formul.get('password').hasError('required')">
+                              Se requiere este campo
+                            </p>
+                            <p *ngIf="formul.get('password').hasError('minlength')">
+                              Minimo 3 caracteres
+                            </p>
+                            <p *ngIf="formul.get('password').hasError('maxlength')">
+                              *Maximo 15 caracteres   
+                            </p>
+                          </mat-hint>
+                    </mat-form-field>
+                </p>
+                <button type="submit" mat-raised-button color="primary" [disabled]="formul.invalid"
+                (click)="ingresar($event)">Ingresar</button>
+
+            </form>
+
+        </div>
+    </mat-card-content>
+</mat-card>
